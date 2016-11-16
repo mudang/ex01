@@ -1,5 +1,3 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.hb.guest.model.GuestDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE>
@@ -14,20 +12,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-ArrayList list=(ArrayList)request.getAttribute("alist");
-for(int i=0; i<list.size(); i++){
-	GuestDto map = (GuestDto)list.get(i);
-System.out.print(map.getSabun());
-System.out.print((","));
-System.out.print(map.getName());
-System.out.print((","));
-System.out.print(map.getNalja());
-System.out.print((","));
-System.out.print(map.getPay());
-System.out.println();
-}
-%>
+<h1>입력하세요</h1>
+<form method="post">
+	<p>
+	<label for="sabun">sabun</label><input id="sabun" type="text" name="sabun"/>
+	</p>
+	<p>
+	<label for="name">name</label><input id="name" type="text" name="name"/>
+	</p>
+	<p>
+	<label for="pay">pay</label><input id="pay" type="text" name="pay"/>
+	</p>
+	<p>
+	<button type="submit"> 입 력 </button>
+	</p>
+</form>
 
 </body>
 </html>

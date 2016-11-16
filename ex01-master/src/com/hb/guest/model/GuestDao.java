@@ -21,7 +21,48 @@ private ResultSet rs;
 				,"sa","");
 	}
 	
- public	ArrayList selectAll() throws SQLException{
+	public void del(GuestDto dto) throws SQLException{
+	String sql= "DELETE FROM GUEST WHERE SABUN=?";
+		pstmt=conn.prepareStatement(sql);
+		pstmt.setInt(1, dto.getSabun());
+		System.out.println(dto.getSabun());
+		int result = pstmt.executeUpdate();
+		if(pstmt!=null)pstmt.close();
+		if(conn!=null)conn.close();
+	}
+	
+	
+	public void update(GuestDto dto) throws SQLException,IllegalArgumentException{
+		 
+		String sql="UPDATE GUEST SET NAME=?,PAY=? WHERE SABUN=?";	
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, dto.getName());
+		pstmt.setInt(2, dto.getPay());
+		pstmt.setInt(3, dto.getSabun());
+		int result = pstmt.executeUpdate();
+		if(pstmt!=null)pstmt.close();
+		if(conn!=null)conn.close();
+		if(result<1){
+			throw new IllegalArgumentException();
+		}
+	}
+	
+	public void insertOne(GuestDto dto) throws SQLException,IllegalArgumentException{
+		String sql="INSERT INTO GUEST VALUES(?,?,SYSDATE,?)";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, dto.getSabun());
+		pstmt.setString(2, dto.getName());
+		pstmt.setInt(3, dto.getPay());
+		int result= pstmt.executeUpdate();
+		if(pstmt!=null)pstmt.close();
+		if(conn!=null)conn.close();
+		if(result<1){
+			throw new IllegalArgumentException();
+		}
+	}
+	
+	
+	public	ArrayList selectAll() throws SQLException{
 	 ArrayList list = new ArrayList();
 
 	 String sql = "SELECT * FROM GUEST";

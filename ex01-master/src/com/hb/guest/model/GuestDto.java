@@ -8,6 +8,8 @@ public class GuestDto {
 	private String name;
 	private Date nalja;
 	private int pay;
+	
+	
 	public int getSabun() {
 		return sabun;
 	}

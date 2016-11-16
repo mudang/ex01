@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
 
-@WebServlet("/")
+
 public class IndexController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
